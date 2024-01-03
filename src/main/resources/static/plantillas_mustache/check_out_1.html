@@ -1,0 +1,134 @@
+<head>
+    <link rel="stylesheet" href="css/checkout_step.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<div class="container">
+    <div class="card">
+        <div class="form">
+            <div class="left-side">
+                <div class="left-heading">
+                    <h3 style="color: white !important;" class="title_order">Realizar Pedido</h3>
+                </div>
+                <div class="steps-content">
+                    <h3>Paso <span class="step-number">1</span></h3>
+                    <p class="step-number-content active">Introduce tu informacion personal para realizar el pedido</p>
+                    <p class="step-number-content d-none">Introduce tus datos de pago para poder realizar el pedido</p>
+                    <p class="step-number-content d-none">Introduce los datos de envio para poder realizar el pedido</p>
+                </div>
+                <ul class="progress-bar">
+                    <li class="active">Informacion Personal</li>
+                    <li>Informacion de Pago</li>
+                    <li>Datos de envio</li>
+                </ul>
+            </div>
+            <div class="right-side">
+                <div class="main active">
+                    <small><i class="fa fa-smile-o"></i></small>
+                    <div class="text">
+                        <h2 class="title_order">Informacion Personal</h2>
+                        <p>Introduce tu informacion personal para realizar el pedido</p>
+                    </div>
+                    <div class="input-text">
+                        <div class="input-div">
+                            <input type="text" required require id="campo_nombre">
+                            <label for="campo_nombre">Nombre Completo</label>
+                        </div>
+                        <div class="input-div"> 
+                            <input type="text" required id="campo_direccion">
+                            <label for="campo_direccion">Dirección</label>
+                        </div>
+                    </div>
+                    <div class="input-text">
+                        <div class="input-div">
+                            <input type="text" required require id="campo_provincia">
+                            <label for="campo_provincia">Provincia</label>
+                        </div>
+                        <div class="input-div">
+                            <input type="text" required require id="campo_codigo_postal">
+                            <label for="campo_codigo_postal">Codigo postal</label>
+                        </div>
+                    </div>
+                    <div class="input-text">
+                        <div class="input-div">
+                            <input type="text" required require id="campo_email">
+                            <label for="campo_email">Email</label>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button class="next_button">Next Step</button>
+                    </div>
+                </div>
+                <div class="main">
+                    <small><i class="fa fa-smile-o"></i></small>
+                    <div class="text">
+                        <h2>Informacion de Pago</h2>
+                        <p>Introduce tus datos de pago para poder realizar el pedido</p>
+                    </div>
+                    <div class="input-text">
+                        <div class="input-div">
+                            <input type="text" required require id="numero_tarjeta">
+                            <label for="numero_tarjeta">Numero de tarjeta</label>
+                        </div>
+                        <div class="input-div"> 
+                            <input type="text" required id="titular_tarjeta">
+                            <label for="titular_tarjeta">Titular de tarjeta</label>
+                        </div>
+                    </div>
+                    <div class="input-text">
+                        <div class="input-div">
+                            <input type="text" required require id="cvv">
+                            <label for="cvv">CVV</label>
+                        </div>
+                        <div class="input-div">
+                            <input type="text" required require id="fecha_caducidad">
+                            <label for="fecha_caducidad">Fecha de caducidad</label>
+                        </div>
+                    </div>
+                    <div class="input-text">
+                        <div class="input-div">
+                            <select id="tipo_tarjeta">
+                                <option>Tipo de tarjeta</option>
+                                <option>Visa</option>
+                                <option>Mastercad</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="buttons button_space">
+                        <button class="back_button">Atras</button>
+                        <button class="next_button">Siguiente paso</button>
+                    </div>
+                </div>
+                <div class="main">
+                    <small><i class="fa fa-smile-o"></i></small>
+                    <div class="text">
+                        <h2>Datos de envio</h2>
+                        <p>Introduce los datos de envio para poder realizar el pedido</p>
+                    </div>
+                    <div class="input-text">
+                        <div class="input-div">
+                            <input type="text" required require id="campo_notas">
+                            <label for="campo_notas">Notas de envio</label>
+                        </div>
+                        <div class="input-div"> 
+                            <input type="text" required require id="campo_pcontacto">
+                            <label for="campo_pcontacto">Persona de contacto</label>
+                        </div>
+                    </div>
+                    <div class="input-text">
+                        <div class="input-div">
+                            <input type="text" required id="campo_tcontacto">
+                            <label for="campo_tcontacto">Telefono de contacto</label>
+                        </div>
+                    </div>
+                    <div class="buttons button_space">
+                        <button class="back_button">Atras</button>
+                        <button class="next_button" id="aceptar_paso_1">Realizar pedido</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="javascript/checkout_steps.js"></script>

@@ -1,0 +1,86 @@
+
+
+<div>
+	mostrar listado de libros para poder comprarlos.
+</div>
+<!-- lo siguiente es la forma de indicar a mustache 
+de que haga lo indicado con cada elemento de un array
+que vamos a darle-->
+
+<div>
+
+  paginacion : <a id="enlace_anterior" href="#">anterior</a>  <a id="enlace_siguiente" href="#">siguiente</a>
+
+  
+
+</div>
+
+
+<div>
+  Total de Zapatillas: <span id="total_resultados" class="badge">0</span>
+</div>
+
+<div class="filter text-center mt-4">
+    <ul id="filters" class="flex justify-center space-x-4">
+        <li class="flex items-center">
+            <a href="#" data-filter="*" class="flex items-center px-4 py-2 bg-gray-300 focus:bg-[#0f1c2d] focus:text-white hover:text-[#0f1c2d] text-black rounded-full">
+                All
+                <img src="ui_images/logo.png" alt="" srcset="" class="w-6 ml-2" />
+            </a>
+        </li>
+        {{#categorias}}
+        <li class="flex items-center">
+            <a href="#" data-filter=".{{nombre}}" class="flex items-center px-4 py-2 bg-gray-300 text-black hover:text-[#0f1c2d] focus:text-white focus:bg-[#0f1c2d] text-gray-700 rounded-full hover:bg-gray-400">
+                {{nombre}}
+                <img src="mostrar_imagen_categoria?id={{id}}" alt="" srcset="" class="w-6 ml-2" />
+            </a>
+        </li>
+        {{/categorias}}
+    </ul>
+</div>
+
+
+
+
+<div class="flex justify-between  flex-row gap-5 px-6 pt-20 -z-10 flex-wrap isotope-container ">
+{{#zapatillas}}
+<div class="isotope-item {{nombre_categoria}} flex min-h-[30rem] items-start justify-center antialiased flex-none w-[27rem]">
+  <div class="flex rounded-xl bg-gradient-to-tr from-blue-100 to-blue-200 shadow-lg">
+    <div class="relative hidden min-h-full flex-col items-center justify-center lg:flex">
+      <img src="mostrar_imagen_categoria?id={{categoria_id}}" alt="" srcset="" class="absolute inset-0 m-5 w-10" />
+      <img src="mostrar_imagen?id={{id}}&&campo=portada" alt="" srcset="" class="mr-3 w-80 -rotate-12 transform" />
+    </div>
+
+    <div class="relative flex h-96 w-72 flex-shrink-0 flex-col rounded-xl bg-white shadow-md lg:w-[13rem]">
+      <img src="mostrar_imagen?id={{id}}&&campo=portada" class="absolute top-0 w-full -translate-y-1/2 -rotate-12 transform lg:hidden" />
+      <div class="mt-20 flex-1 px-8 text-gray-700 lg:mt-14">
+        <h2 class="text-2xl font-extrabold leading-none tracking-wide text-black">{{marca}}</h2>
+        <h3 class="mt-2 text-sm text-gray-500">{{modelo}}</h3>
+
+        <div class="my-2">
+          <p class="mb-1">Talla</p>
+          <div class="flex items-center gap-4 text-xs">
+            <div class="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-gray-600  leading-none text-black">{{talla}}</div>
+          </div>
+        </div>
+        <div class="mt-1">{{colores}}</div> <br>
+        <p class="mt-10 scale-110 transform text-2xl font-extrabold leading-none pl-4">{{precio}}€</p>
+      </div>
+      <div class="mb-3 flex items-center justify-between px-6 text-gray-700">
+        
+        <a id-producto="{{id}}" class="cursor-pointer enlace_ver_detalles_zapatilla rounded-lg border-2 border-gray-400 p-1 px-2 leading-none text-gray-700">Detalle</a>
+        <img id-producto="{{id}}" class="enlace_desear_listado_principal" src="ui_images/icon-heart-dark.svg" alt="">
+        <img id-producto="{{id}}" class="enlace_comprar_listado_principal" src="ui_images/icon-shopping-bag-dark.svg" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+{{/zapatillas}}
+</div>
+
+
+
+<script src="javascript/filtrado_categorias.js"></script>
+
+
+

@@ -1,0 +1,51 @@
+<body class="bg-gray-900 text-white">
+    <!--====== Section 2 ======-->
+    <div class="p-8">
+        <!--====== Section Intro ======-->
+        <div class="mb-8">
+            <div class="container mx-auto">
+                <div class="text-center">
+                    <h1 class="text-3xl font-bold text-secondary">Detalles del Usuario y Pedidos</h1>
+                </div>
+            </div>
+        </div>
+        <!--====== End - Section Intro ======-->
+
+        <!--====== Section Content ======-->
+        <div class="container mx-auto">
+            <div class="flex flex-col">
+                <div class="mb-8">
+                    <!--====== Detalles de Usuario ======-->
+                        <div class="bg-white rounded shadow-md mb-6 p-4">
+                            <div class="flex items-center justify-between">
+                                <div class="text-xl font-semibold">{{usuario_nombre}}</div>
+                                <div class="text-gray-600">{{usuario_email}}</div>
+                            </div>
+                        </div>
+
+                    <!--====== End - Detalles de Usuario ======-->
+                </div>
+
+                <div>
+                    <!--====== Detalles de Pedidos ======-->
+                    {{#pedidos}}
+                        <div class="bg-white rounded shadow-md mb-6 p-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="text-xl font-semibold">{{nombreCompleto}}</div>
+                                    <div class="text-gray-600">Direccion: {{direccion}}</div>
+                                    <div class="text-gray-600">Provincia #{{provincia}}</div>
+                                    <div class="text-gray-600">Titular de la tarjeta: {{titularTarjeta}}</div>
+                                    <div class="text-gray-600">Estado del pedido: {{estado}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/pedidos}}
+                    <!--====== End - Detalles de Pedidos ======-->
+                </div>
+            </div>
+        </div>
+        <!--====== End - Section Content ======-->
+    </div>
+    <!--====== End - Section 2 ======-->
+</body>

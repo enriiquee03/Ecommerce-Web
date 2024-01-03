@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+ <title>Añadir Zapatilla</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/templatemo/1.0.0/css/templatemo-style.min.css">
+</head>
+<body>
+	<div th:insert="fragments/general.html :: menu"></div>
+    Introduce los datos de la nueva zapatilla: 
+
+    <form class="container tm-mt-big tm-mb-big" action="#" th:action="guardarZapatilla" th:object="${nuevaZapatilla}" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+                <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="tm-block-title d-inline-block">Añade los datos de la nueva zapatilla</h2>
+                        </div>
+                    </div>
+                    <div class="row tm-edit-product-row">
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                                <div class="form-group mb-3">
+                                    <label for="marca">Marca</label>
+                                    <input id="marca" name="marca" type="text" th:field="*{marca}" class="form-control validate" />
+                                    <span style="color: red;" th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}" ></span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="modelo">Modelo</label>
+                                    <input id="modelo" name="modelo" type="text" th:field="*{modelo}" class="form-control validate" />
+                                    <span style="color: red;" th:if="${#fields.hasErrors('modelo')}" th:errors="*{modelo}" ></span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="precio">Precio</label>
+                                    <input id="precio" name="precio" type="number" step=".01" th:field="*{precio}" class="form-control validate" />
+                                    <span style="color: red;" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}" ></span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="talla">Talla</label>
+                                    <input id="talla" name="talla" type="text" th:field="*{talla}" class="form-control validate" />
+                                    <span style="color: red;" th:if="${#fields.hasErrors('talla')}" th:errors="*{talla}" ></span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="colores">Colores</label>
+                                    <input id="colores" name="colores" type="text" th:field="*{colores}" class="form-control validate" />
+                                    <span style="color: red;" th:if="${#fields.hasErrors('colores')}" th:errors="*{colores}" ></span> <br>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="category">Categoria</label>
+                                    <select th:field="*{idCategoria}" class="custom-select tm-select-accounts" id="category">
+                                      <option th:each="c : ${categorias}" th:text="${c.nombre}" th:value="${c.id}"></option>
+                                    </select>
+                                </div>
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+                            <div>
+                                <div class="tm-product-img-dummy mx-auto">
+                                    <i class="fas fa-cloud-upload-alt tm-upload-icon" onclick="document.getElementById('fileInput1').click();"></i>
+                                    <img id="previewImage1" src="#" alt="Preview" style="display: none; max-width: 100%; max-height: 100%;">
+                                </div>
+                                <div class="custom-file mt-3 mb-3">
+                                    <input id="fileInput1" th:field="*{fotoSubida}" type="file" style="display: none;" onchange="previewImage('fileInput1', 'previewImage1');" />
+                                    <input  type="button" class="btn btn-primary btn-block mx-auto" value="Añade la imagen principal " onclick="document.getElementById('fileInput1').click();" />
+                                </div>
+                                <div class="tm-product-img-dummy mx-auto">
+                                  <i class="fas fa-cloud-upload-alt tm-upload-icon" onclick="document.getElementById('fileInput2').click();"></i>
+                                  <img id="previewImage2" src="#" alt="Preview" style="display: none; max-width: 100%; max-height: 100%;">
+                                </div>
+                                <div class="custom-file mt-3 mb-3">
+                                    <input id="fileInput2" th:field="*{fotoSubidaProductoDetalle_1}" type="file" style="display: none;" onchange="previewImage('fileInput2', 'previewImage2');" />
+                                    <input type="button"  class="btn btn-primary btn-block mx-auto" value="Añade la imagen Detalle1 " onclick="document.getElementById('fileInput2').click();" />
+                                </div>
+                                <div class="tm-product-img-dummy mx-auto">
+                                    <i class="fas fa-cloud-upload-alt tm-upload-icon" onclick="document.getElementById('fileInput3').click();"></i>
+                                    <img id="previewImage3" src="#" alt="Preview" style="display: none; max-width: 100%; max-height: 100%;">
+                                </div>
+                                <div class="custom-file mt-3 mb-3">
+                                    <input id="fileInput3" th:field="*{fotoSubidaProductoDetalle_2}" type="file" style="display: none;" onchange="previewImage('fileInput3', 'previewImage3');" />
+                                    <input type="button" class="btn btn-primary btn-block mx-auto" value="Añade la imagen Detalle2 " onclick="document.getElementById('fileInput3').click();" />
+                                </div>
+                                <div class="tm-product-img-dummy mx-auto">
+                                    <i class="fas fa-cloud-upload-alt tm-upload-icon" onclick="document.getElementById('fileInput4').click();"></i>
+                                    <img id="previewImage4" src="#" alt="Preview" style="display: none; max-width: 100%; max-height: 100%;">
+                                </div>
+                                <div class="custom-file mt-3 mb-3">
+                                    <input id="fileInput4" th:field="*{fotoSubidaProductoDetalle_3}" type="file" style="display: none;" onchange="previewImage('fileInput4', 'previewImage4');" />
+                                    <input type="button" class="btn btn-primary btn-block mx-auto" value="Añade la imagen Detalle3 " onclick="document.getElementById('fileInput4').click();" />
+                                </div>
+                                <div class="tm-product-img-dummy mx-auto">
+                                    <i class="fas fa-cloud-upload-alt tm-upload-icon" onclick="document.getElementById('fileInput5').click();"></i>
+                                    <img id="previewImage5" src="#" alt="Preview" style="display: none; max-width: 100%; max-height: 100%;">
+                                </div>
+                                <div class="custom-file mt-3 mb-3">
+                                    <input id="fileInput5" type="file" th:field="*{fotoSubidaProductoDetalle_4}" style="display: none;" onchange="previewImage('fileInput5', 'previewImage5');" />
+                                    <input type="button" class="btn btn-primary btn-block mx-auto" value="Añade la imagen Detalle4 " onclick="document.getElementById('fileInput5').click();" />
+                                </div>
+                                <div class="tm-product-img-dummy mx-auto">
+                                    <i class="fas fa-cloud-upload-alt tm-upload-icon" onclick="document.getElementById('fileInput6').click();"></i>
+                                    <img id="previewImage6" src="#" alt="Preview" style="display: none; max-width: 100%; max-height: 100%;">
+                                </div>
+                                <div class="custom-file mt-3 mb-3">
+                                    <input id="fileInput6" type="file" th:field="*{fotoSubidaProductoDetalle_5}" style="display: none;" onchange="previewImage('fileInput6', 'previewImage6');" />
+                                    <input type="button" class="btn btn-primary btn-block mx-auto" value="Añade la imagen Detalle5 " onclick="document.getElementById('fileInput6').click();" />
+                                </div>
+                              </div>
+                        </div>
+
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block text-uppercase">Añadir nueva Zapatilla</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </form>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        function previewImage(inputId, imageId) {
+            var fileInput = document.getElementById(inputId);
+            var previewImage = document.getElementById(imageId);
+
+            var file = fileInput.files[0];
+            if (file) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>

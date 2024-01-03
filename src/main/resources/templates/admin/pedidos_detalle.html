@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Pedido</title>
+    <!-- Agrega los enlaces a las bibliotecas de Bootstrap y Font Awesome según sea necesario -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        .details-section {
+            margin: 20px 0;
+        }
+
+        .product-details {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        select {
+            width: 200px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div th:insert="fragments/general.html :: menu"></div>
+
+<div class="container">
+    <div class="details-section">
+        <h4 class="text-center">Detalles del Pedido:</h4>
+
+        <div class="details-section">
+            <h5>Datos de Envío:</h5>
+            <p>Nombre: <span th:text="${pedido.nombreCompleto}"></span></p>
+            <p>Dirección: <span th:text="${pedido.direccion}"></span></p>
+            <p>Provincia: <span th:text="${pedido.provincia}"></span></p>
+        </div>
+
+        <div class="details-section">
+            <h5>Datos de Pago:</h5>
+            <p>Tipo de Tarjeta: <span th:text="${pedido.tipoTarjeta}"></span></p>
+            <p>Titular: <span th:text="${pedido.titularTarjeta}"></span></p>
+            <p>Número de Tarjeta: <span th:text="${pedido.numeroTarjeta}"></span></p>
+        </div>
+
+        <div class="details-section">
+            <h5>Productos del Pedido:</h5>
+            <div th:each="productoPedido : ${pedido.productosPedido}" class="product-details">
+                <p>Marca: <span th:text="${productoPedido.zapatilla.marca}"></span></p>
+                <p>Modelo: <span th:text="${productoPedido.zapatilla.modelo}"></span></p>
+                <p>Precio/Unidad: <span th:text="${productoPedido.zapatilla.precio}"></span></p>
+                <p>Cantidad: <span th:text="${productoPedido.cantidad}"></span></p>
+            </div>
+        </div>
+
+        <input type="hidden" id="id_pedido" th:field="${pedido.id}">
+
+<div class="details-section text-center">
+            <h5>Estado del Pedido:</h5>
+            <select id="select_estado" th:field="${pedido.estado}" class="form-control">
+                <option th:each="e : ${estados}" th:text="${e}" th:value="${e.key}"></option>
+            </select>
+        </div>
+<script src="../librerias_js/jquery.js"></script>
+
+	<script>
+		$("#select_estado").change(function(){
+			let estado = $("#select_estado").find(":selected").val()
+			let idPedido = $("#id_pedido").val()
+			alert("estado: " + estado + " para la id de pedido: " + idPedido)
+			$.post("servicioWebPedidos/actualizarEstadoPedido",
+				{
+					id: idPedido,
+					estado: estado
+				}
+			).done(function (res){
+				if(res != 'ok') {
+					alert(res)
+				}else{
+					alert('Listo')
+				}
+			})
+		})
+	</script>
+
+</body>
+</html>

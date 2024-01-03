@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script src="https://cdn.tailwindcss.com?typography,aspect-ratio,line-clamp"></script>
+<!-- boostrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- iconos  -->
+    <link rel="stylesheet" href="css/material-icons.css">
+    <!-- animaciones  -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- slider  -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <!-- css personalizado -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="css/utility.css">
+    
+    
+    <link rel="stylesheet" href="css/wishlist.css">
+    
+    
+    <link rel="stylesheet" href="css/vendor.css">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet" />
+    <style>
+        #contenedor{
+            display: none;
+        }
+    </style>
+    
+</head>
+<body>
+
+
+<a href="admin/obtenerZapatillas">Accès à l'administration</a>
+ <!-- Header  -->
+    <header class="header-section pos-relative light-bg  d-none d-lg-block section-fluid-270 ">
+        <div class="header-wrapper pos-relative">
+            <div class="container-fluid">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-auto">
+                        <a href="#" class="header-logo">
+                            <img src="ui_images/logo.png" width="70px" height="70px" alt="" class="img-fluid">
+                        </a>
+                        <!-- fin logo  -->
+                    </div>
+                    <div class="col-auto d-flex align-items-center">
+                        <div class="header-event">
+                            <div class="menu-event dropdown">
+                                <button class="main-menu-event dropdown-toggle" data-bs-toggle="dropdown">
+                                    <img src="ui_images/icon-open-menu.svg" alt="">
+                                    <span>Menu</span>
+                                    <img src="ui_images/icon-arrow-drop-down.svg" alt="">
+                                </button>
+                                <ul class="mainmenu-nav dropdown-menu">
+                                    <li class="menu-items">
+                                        <a href="" id="inicio">Début</a>
+                                    </li>
+                                    <li class="menu-items">
+                                        <a href="#" id="zapatillas">Baskets
+                                        </a>
+                                    </li>
+                                    <li class="menu-items">
+                                        <a href="#">Profil
+                                            <span class="material-icons">arrow_right</span>
+                                        </a>
+                                        <div class="has-dropdown megamenu">
+                                            <div class="menu-content">
+                                                <h6 class="title">Usuario</h6>
+                                                <ul class="submenu">
+                                                    <li><a href="#" id="registrarme">S'inscrire/Se connecter</a></li>
+                                                    <li><a href="#" id="logout">Déconnexion</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="menu-content">
+                                                <h6 class="title">Commandes</h6>
+                                                <ul class="submenu">
+                                                    <li><a href="#" id="mis_pedidos"> Commandes</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            <div class="search-event">
+                                <input id="marca_buscador" type="search" placeholder="Search..." class="header-search">
+                                <button id="zapatillas_buscar" class="header-search-btn">
+                                    <img id="image-search" src="ui_images/icon-search.svg" alt="">
+                                </button>
+                            </div>
+
+                            <!-- fin del menu  -->
+                        </div>
+                    </div>
+                    
+						<div class="dropdown">
+						    <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
+						    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+						        <li>
+						            <a class="dropdown-item" href="#" data-flag-class="flag-icon-us" data-lang="us">
+						                <span class="flag-icon flag-icon-us me-1"></span> <span>us</span>
+						            </a>
+						        </li>
+						        <li>
+						            <a class="dropdown-item active" href="#" data-flag-class="flag-icon-fr" data-lang="fr">
+						                <span class="flag-icon flag-icon-fr me-1"></span> <span>fr</span>
+						            </a>
+						        </li>
+						        <li>
+						            <a class="dropdown-item" href="#" data-flag-class="flag-icon-es" data-lang="es">
+						                <span class="flag-icon flag-icon-es me-1"></span> <span>es</span>
+						            </a>
+						        </li>
+						    </ul>
+						</div>
+                    
+
+                    <div class="col-auto">
+                        <div class="header-action">
+                            <button id="deseo"class="header-action-item header-action-wishlist" data-bs-toggle="offcanvas"
+                                data-bs-target="#wishlistOffcanvas">
+                                <img src="ui_images/icon-heart-dark.svg" alt="">
+                                <span class="count-tag">00</span>
+                            </button>
+                            <button id="carrito" class="header-action-item header-action-wishlist" data-bs-toggle="offcanvas"
+                                data-bs-target="#addcartOffcanvas">
+                                <img src="ui_images/icon-shopping-bag-dark.svg" alt="">
+                                <span class="count-tag">00</span>
+                            </button>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--    final del header  -->
+
+	
+
+    <!-- Header de movil -->
+
+    <div class="mobile-header d-block d-lg-none">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto">
+                    <div class="mobile-logo">
+                        <a href="index.html">
+                            <img src="logo.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="mobile-action-link text-end d-flex">
+                        <button data-bs-toggle="offcanvas" data-bs-target="#toggleMenu">
+                            <span class="material-icons">Menu</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- final del header del movil -->
+
+    <!-- offcanvas del menu de movil  -->
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="toggleMenu">
+        <div class="offcanvas-header">
+            <button class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="d-flex justify-content-center">
+                <a href="#" class="header-action-item header-action-wishlist">
+                    <img src="ui_images/icon-heart-dark.svg" alt="">
+                    <span class="count-tag">03</span>
+                </a>
+                <a href="#" class="header-action-item header-action-wishlist" id="carrito">
+                    <img src="ui_images/icon-shopping-bag-dark.svg" alt="">
+                    <span class="count-tag">03</span>
+                </a>
+            </div>
+            <div class="header-event mobile-search my-5">
+                <div class="search-event">
+                    <input type="search" class="header-search">
+                    <button id="search_zapatillas" class="header-search-btn">
+                        <img id="image-search" src="ui_images/icon-search.svg" alt="">
+                    </button>
+                </div>
+            </div>
+
+            <!-- offcanvas  wrapper de movil  -->
+            <div class="offcanvas-mobile-menu-wrapper">
+                <div class="mobile-menu-bottom">
+                    <div class="offcanvas-menu">
+                        <ul>
+                            <li>
+                                <a href="#" id="inicio"><span>Début</span></a>
+                            </li>
+                            <li>
+                                <a href="#" id="zapatillas"><span>Baskets</span></a>
+                            </li>
+                            <li>
+                                <a href="#"><span>Profil</span></a>
+                                <ul class="mobile-sub-menu">
+                                    <li>
+                                        <a href="#">Usuario</a>
+                                        <ul class="mobile-sub-menu">
+                                            <li><a href="#" id="registrarme">S'inscrire</a></li>
+                                            <li><a href="#" id="identificarme" >Se connecter</a></li>
+                                            <li><a href="#" id="logout">Déconnexion</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul class="mobile-sub-menu">
+                                    <li>
+                                        <a href="#">Commandes</a>
+                                        <ul class="mobile-sub-menu">
+                                            <li><a href="#" id="carrito">Panier</a></li>
+                                            <li><a href="#" id="mis_pedidos">Commandes</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mobile-contact-info text-center">
+                    <div class="social-link">
+                        <li>
+                            <a href="#" style="display:flex; justify-content : center;  align-items:center;">
+                                <img src="ui_images/icon-facebook-f-dark.svg" alt="" class="icon-svg">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" style="display:flex; justify-content : center;  align-items:center;">
+                                <img src="ui_images/icon-dribbble-dark.svg" alt="" class="icon-svg">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" style="display:flex; justify-content : center;  align-items:center;" >
+                                <img src="ui_images/icon-twitter-dark.svg" alt="" class="icon-svg">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" style="display:flex; justify-content : center;  align-items:center;">
+                                <img src="ui_images/icon-pinterest-p-dark.svg" alt="" class="icon-svg">
+                            </a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+            <!-- offcanvas mobile wrapper ends -->
+        </div>
+    </div>
+   <div id="inicio-content">
+        <!-- slider -->
+    <div class="hero-slider-section hero-slider-light section-fluid-270">
+        <div class="box-wrapper">
+            <div class="hero-slider-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="hero-slider">
+                                <div class="swiper-container">
+                                    <div class="swiper-wrapper">
+                                        <div class="hero-sin-slider swiper-slide hero-bg">
+                                            <div class="image">
+                                                <img src="ui_images/slider/slider1.png" width="500" height="650" alt=""
+                                                    class="img-fluid" loading="lazy">
+                                            </div>
+                                            <div class="image-shape"></div>
+                                            <div class="content-box">
+                                                <div class="row" style="justify-content: left !important;">
+                                                    <div
+                                                        class="col-xl-5 offset-xl-1 col-lg-5 col-md-8 offset-md-1 col-10">
+                                                        <div class="content">
+                                                            <span class="title-tag">50% - 80% OFF</span>
+                                                            <h2 class="title">Nike</h2>
+                                                            <p>Dans notre magasin, vous trouverez des baskets avec d'incroyables réductions</p>
+                                                            <a href="#" class="btn btn-lg btn-default">COMPRA YA</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="hero-slider-shape hero-slider-top-shape">
+                                                <img src="ui_images/hero-slider-top-shape.svg" width="113" height="107"
+                                                    class="img-fluid" loading="lazy" alt="">
+                                            </div>
+                                            <div class="hero-slider-shape hero-slider-bottom-shape">
+                                                <img src="ui_images/hero-slider-bottom-shape.svg" width="221"
+                                                    height="234" loading="lazy" alt="" class="img-fluid">
+                                            </div>
+                                        </div>
+                                        <div class="hero-sin-slider swiper-slide hero-bg">
+                                            <div class="image">
+                                                <img src="ui_images/slider/slider2.png" width="500" height="650" alt=""
+                                                    class="img-fluid" loading="lazy">
+                                            </div>
+                                            <div class="image-shape"></div>
+                                            <div class="content-box">
+                                                <div class="row">
+                                                    <div
+                                                        class="col-xl-5 offset-xl-1 col-lg-5 col-md-8 offset-md-1 col-10">
+                                                        <div class="content">
+                                                            <span class="title-tag">Jusqu'à 40% de réduction</span>
+                                                            <h2 class="title">Robes ethniques</h2>
+                                                            <p>This is Lorem ipsum, dolor sit amet consectetur
+                                                                adipisicing elit. A, doloribus? Dignissimos,
+                                                                perferendis? Nostrum enim expedita consectetur eos
+                                                                mollitia adipisci, doloremque, distinctio et ad quia
+                                                                dolorum!</p>
+                                                            <a href="#" class="btn btn-lg btn-default">ACHETER MAINTENANT</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="hero-slider-shape hero-slider-top-shape">
+                                                <img src="ui_images/hero-slider-top-shape.svg" width="113" height="107"
+                                                    class="img-fluid" loading="lazy" alt="">
+                                            </div>
+                                            <div class="hero-slider-shape hero-slider-bottom-shape">
+                                                <img src="ui_images/hero-slider-bottom-shape.svg" width="221"
+                                                    height="234" loading="lazy" alt="" class="img-fluid">
+                                            </div>
+                                        </div>
+                                        <div class="hero-sin-slider swiper-slide hero-bg">
+                                            <div class="image">
+                                                <img src="ui_images/slider/slider3.png" width="500" height="650" alt=""
+                                                    class="img-fluid" loading="lazy">
+                                            </div>
+                                            <div class="image-shape"></div>
+                                            <div class="content-box">
+                                                <div class="row">
+                                                    <div
+                                                        class="col-xl-5 offset-xl-1 col-lg-5 col-md-8 offset-md-1 col-10">
+                                                        <div class="content">
+                                                            <span class="title-tag">30% de réduction immédiate</span>
+                                                            <h2 class="title">Hauts noirs</h2>
+                                                            <p>This is Lorem ipsum, dolor sit amet consectetur
+                                                                adipisicing elit. A, doloribus? Dignissimos,
+                                                                perferendis? Nostrum enim expedita consectetur eos
+                                                                mollitia adipisci, doloremque, distinctio et ad quia
+                                                                dolorum!</p>
+                                                            <a href="#" class="btn btn-lg btn-default">ACHETER MAINTENANT</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="hero-slider-shape hero-slider-top-shape">
+                                                <img src="ui_images/hero-slider-top-shape.svg" width="113" height="107"
+                                                    class="img-fluid" loading="lazy" alt="">
+                                            </div>
+                                            <div class="hero-slider-shape hero-slider-bottom-shape">
+                                                <img src="ui_images/hero-slider-bottom-shape.svg" width="221"
+                                                    height="234" loading="lazy" alt="" class="img-fluid">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fin del slider -->
+
+
+    <!-- Zona de informacion  -->
+
+    <div class="shipping-section section-fluid-270 section-top-gap-100">
+        <div class="box-wrapper">
+            <div class="shipping-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="row justify-content-between mb-n40">
+                            <div class="col-xl-4 col-md-6 col-12 mb-40">
+
+                                <div class="ship-single">
+                                    <div class="icon">
+                                        <img src="ui_images/icons_inicio/fast delivery.png" width="46" height="33" alt=""
+                                            class="img-fluid">
+                                    </div>
+                                    <div class="content">
+                                        <h4 class="title">Livraison rapide</h4>
+                                        <p>This is lorem ipsum dolor sit amet.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-xl-4 col-md-6 col-12 mb-40">
+
+                                <div class="ship-single">
+                                    <div class="icon">
+                                        <img src="ui_images/icons_inicio/refund.png" width="46" height="33" alt=""
+                                            class="img-fluid">
+                                    </div>
+                                    <div class="content">
+                                        <h4 class="title">100% de retours</h4>
+                                        <p>This is lorem ipsum dolor sit amet.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-xl-4 col-md-6 col-12 mb-40">
+
+                                <div class="ship-single">
+                                    <div class="icon">
+                                        <img src="ui_images/icons_inicio/24x7.png" width="46" height="33" alt=""
+                                            class="img-fluid">
+                                    </div>
+                                    <div class="content">
+                                        <h4 class="title">Service client 24h/24, 7j/7</h4>
+                                        <p>This is lorem ipsum dolor sit amet.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fin de la zona de informacion -->
+
+    <!-- Cards del banner  -->
+    <div class="banner-card-section section-fluid-270 section-top-gap-100">
+        <div class="box-wrapper">
+            <div class="banner-card-wrapper">
+                <div class="container-fluid">
+                    <div class="row mb-n20">
+                        <div class="col-lg-4 col-md-6 mb-20">
+
+                            <div class="banner-card-single-item banner-animate--flash">
+                                <div class="image img-responsive">
+                                    <img src="ui_images/banner/banner3.jpg" width="435" height="308" alt="">
+                                </div>
+                                <div class="content">
+                                    <p class="tag">Réduction : 30%</p>
+                                    <h4 class="title">New Balance</h4>
+                                    <a href="#" class="text-link dark">ACHÈTE MAINTENANT</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-20">
+
+                            <div class="banner-card-single-item banner-animate--flash">
+                                <div class="image img-responsive">
+                                    <img src="ui_images/banner/banner2.jpeg" width="435" height="308" alt="">
+                                </div>
+                                <div class="content">
+                                    <p class="tag"><span class="white">Réduction : 30%</span></p>
+                                    <h4 class="title">Premium <span class="white">Nike</span></h4>
+                                    <a href="#" class="text-link white">ACHÈTE MAINTENANT</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-20">
+
+                            <div class="banner-card-single-item banner-animate--flash">
+                                <div class="image img-responsive">
+                                    <img src="ui_images/banner/banner1.png" width="435" height="308" alt="">
+                                </div>
+                                <div class="content">
+                                    <p class="tag"><span class="white">Réduction : 10%</span></p>
+                                    <h4 class="title">Adidas</h4>
+                                    <a href="#" class="text-link white">ACHÈTE MAINTENANT</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fin de las banner cards -->
+
+    <!-- Marcas con las que trabajamos  -->
+    <div class="company-logo-section section-fluid-270 section-top-gap-100">
+        <div class="box-wrapper">
+            <div class="company-logo-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 ">
+                            <div class="company-slider company-slider-bg">
+                                <div class="swiper-container">
+                                    <div class="swiper-wrapper">
+                                        <a href="#" class="company-slider-single-item swiper-slide">
+                                            <div class="image">
+                                                <img src="ui_images/logos/l1.png" alt="" class="img-fluid">
+                                            </div>
+                                        </a>
+                                        <a href="#" class="company-slider-single-item swiper-slide">
+                                            <div class="image">
+                                                <img src="ui_images/logos/l2.png" alt="" class="img-fluid">
+                                            </div>
+                                        </a>
+                                        <a href="#" class="company-slider-single-item swiper-slide">
+                                            <div class="image">
+                                                <img src="ui_images/logos/l3.png" alt="" class="img-fluid">
+                                            </div>
+                                        </a>
+                                        <a href="#" class="company-slider-single-item swiper-slide">
+                                            <div class="image">
+                                                <img src="ui_images/logos/l4.png" alt="" class="img-fluid">
+                                            </div>
+                                        </a>
+                                        <a href="#" class="company-slider-single-item swiper-slide">
+                                            <div class="image">
+                                                <img src="ui_images/logos/l5.png" alt="" class="img-fluid">
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- final marcas con las que tramajamos -->
+  </div>
+  
+  
+
+
+<div id="contenedor">
+	
+	
+</div>
+<script src="librerias_js/jquery.js"></script>
+
+<script src="librerias_js/js.cookie.min.js"></script>
+<script src="javascript/globales.js"></script>
+<script src="javascript/carga_plantillas.js"></script>
+<script src="javascript/funciones_menu.js"></script>
+<script src="javascript/pasos_checkout.js"></script>
+<script src="javascript/validaciones.js"></script>
+<script src=" librerias_js/vendor.js"></script>
+    <script src="librerias_js/main.js"></script>
+    <script src="librerias_js/app.js"></script>
+    
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="javascript/multi_idioma.js"></script>
+<script src="librerias_js/mustache.js"></script>
+
+
+</body>
+</html>

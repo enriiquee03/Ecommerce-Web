@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Administracion</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
+    <!-- https://fonts.google.com/specimen/Roboto -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/templatemo/1.0.0/css/templatemo-style.min.css">
+    <!--
+	Product Admin CSS Template
+	https://templatemo.com/tm-524-product-admin
+	-->
+	
+	
+</head>
+
+  <body id="reportsPage">
+<div th:insert="fragments/general.html :: menu"></div>
+
+
+    <div class="container mt-5">
+      <div class="row tm-content-row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
+			<form action="obtenerZapatillas" method="get">
+			    <div class="form-group">
+			        <label for="marca" th:text="#{zapatilla.buscar}">:</label>
+			        <input type="text" class="form-control" id="marca" name="marca" th:value="${marca}">
+			    </div>
+			    <button type="submit" class="btn btn-primary"th:text="#{zapatilla.buscar}"></button>
+			</form>
+          <div class="tm-bg-primary-dark tm-block tm-block-products">
+            <div class="tm-product-table-container">
+              <table class="table table-hover tm-table-small tm-product-table">
+                <thead>
+                  <tr>
+                    <th scope="col">&nbsp;</th>
+                    <th scope="col"th:text="#{zapatilla.marca}"></th>
+                    <th scope="col" th:text="#{zapatilla.modelo}">>MODELO</th>
+                    <th scope="col" th:text="#{zapatilla.precio}">>PRECIO</th>
+                    <th scope="col" th:text="#{zapatilla.categoria}">>CATEGORIA</th>
+                    <th scope="col" th:text="#{zapatilla.imagen} + P">> </th>
+                    <th scope="col" th:text="#{zapatilla.imagen} + D1">> </th>
+                    <th scope="col" th:text="#{zapatilla.imagen} + D2">> </th>
+                    <th scope="col" th:text="#{zapatilla.imagen} + D3">> </th>
+                    <th scope="col" th:text="#{zapatilla.imagen} + D4">> </th>
+                    <th scope="col" th:text="#{zapatilla.imagen}+ D5">> </th>
+                    <th scope="col">&nbsp;</th>
+                  </tr>
+                </thead>
+                <tbody th:each="zapatilla : ${zapatillas}" >
+                  <tr>
+                    <th scope="row"th:text="#{zapatilla.indice}"></th>
+                    <td class="tm-product-name" th:text="${zapatilla.marca}"></td>
+                    <td th:text="${zapatilla.modelo}"></td>
+                    <td th:text="${zapatilla.precio + ' €'}"></td>
+                    <td th:text="${zapatilla.categoria.nombre}"></td>
+                    <td><img th:src="@{${ '../mostrar_imagen?id=' + zapatilla.id + '&&campo=portada' }}" alt="Foto Zapatilla" height="40px"></td>
+                    <td><img th:src="@{${ '../mostrar_imagen?id=' + zapatilla.id + '&&campo=detalle_1' }}" alt="Foto Zapatilla Detalle 1" height="40px"></td>
+                    <td><img th:src="@{${ '../mostrar_imagen?id=' + zapatilla.id + '&&campo=detalle_2' }}" alt="Foto Zapatilla Detalle 2" height="40px"></td>
+                    <td><img th:src="@{${ '../mostrar_imagen?id=' + zapatilla.id + '&&campo=detalle_3' }}" alt="Foto Zapatilla Detalle 3" height="40px"></td>
+                    <td><img th:src="@{${ '../mostrar_imagen?id=' + zapatilla.id + '&&campo=detalle_4' }}" alt="Foto Zapatilla Detalle 4" height="40px"></td>
+                    <td><img th:src="@{${ '../mostrar_imagen?id=' + zapatilla.id + '&&campo=detalle_5' }}" alt="Foto Zapatilla Detalle 5" height="40px"></td>
+                    <td>
+                      <a th:href="@{${ 'borrarZapatilla?id=' + zapatilla.id }}" class="tm-product-delete-link" >
+                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                      </a>
+                    </td>
+                    <td>
+					    <a th:href="@{${ 'editarZapatilla?id=' + zapatilla.id }}" class="tm-product-edit-link">
+					        <i class="fas fa-pencil-alt tm-product-edit-icon"></i>
+					    </a>
+					</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mt-4">
+			        <nav aria-label="Paginación">
+			            <ul style="isplay: flex;
+    justify-content: space-between;" class="pagination">
+			                <li class="page-item" th:if="${anterior >= 0}">
+			                    <a class="page-link" th:href="@{${ 'obtenerZapatillas?comienzo=' + anterior + '&marca=' + marca }}">Anterior</a>
+			                </li>
+			                <li class="page-item" th:if="${siguiente < total}">
+			                    <a class="page-link" th:href="@{${ 'obtenerZapatillas?comienzo=' + siguiente + '&marca=' + marca }}">Siguiente</a>
+			                </li>
+			            </ul>
+			        </nav>
+			</div>
+            <!-- table container -->
+            <a
+              href="registrarZapatillas"
+              class="btn btn-primary btn-block text-uppercase mb-3" th:text="#{zapatilla.anadir}" ></a>
+          </div>
+        </div>
+
+
+    
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

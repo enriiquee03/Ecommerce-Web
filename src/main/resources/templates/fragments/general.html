@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
+    <!-- https://fonts.google.com/specimen/Roboto -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/templatemo/1.0.0/css/templatemo-style.min.css">
+</head>
+<body>
+
+<div th:fragment="menu">
+	<nav class="navbar navbar-expand-xl navbar-light bg-light">
+	    <div class="container">
+	        <a class="navbar-brand" th:text="#{nav.cliente}" href="../"></a>
+	
+	        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	            <ul class="navbar-nav mx-auto" style="white-space: nowrap;">
+	                <li class="nav-item dropdown">
+	                    <a th:text="#{nav.idioma}" class="nav-link dropdown-toggle" href="#" id="idiomaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                        <i class="fas fa-globe"></i> 
+	                    </a>
+	                    <div class="dropdown-menu" aria-labelledby="idiomaDropdown">
+	                        <a class="dropdown-item" href="?idioma=es">Español</a>
+	                        <a class="dropdown-item" href="?idioma=us">Inglés</a>
+	                    </div>
+	                </li>
+	                <li class="nav-item">
+	                    <a th:text="#{nav.zapatilla}" class="nav-link" href="obtenerZapatillas" ><i class="fas fa-shoe-prints"></i> </a>
+	                </li>
+	                <li class="nav-item">
+	                    <a th:text="#{nav.categoria}" class="nav-link" href="obtenerCategorias"><i class="fas fa-th"></i> </a>
+	                </li>
+	                <li class="nav-item">
+	                    <a th:text="#{nav.usuario}" class="nav-link" href="obtenerUsuarios"><i class="fas fa-users"></i> </a>
+	                </li>
+	                <li class="nav-item">
+	                    <a th:text="#{nav.pedido}" class="nav-link" href="obtenerPedidos"><i class="fas fa-shopping-cart"></i> </a>
+	                </li>
+	                <li class="nav-item">
+	                    <a th:text="#{nav.salir}" class="nav-link" href="../logoutAdmin"><i class="fas fa-sign-out-alt"></i> </a>
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+	</nav>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
